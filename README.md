@@ -7,11 +7,8 @@
 
 ## Pre-Flight Setup
 - cd PROJECT-DIRECTORY/
-- docker-compose up
 
-## Demo
-
-### Part 0 - Build Source Code
+### Build Source Code
 Execute below command to seller-service directory.
 ```
 cd seller-service
@@ -24,12 +21,16 @@ cd ../seller-anomaly-consumer
 docker build -t seller-anomaly-consumer .
 ```
 
-Execute below command to root directory.
+### Execute Containers
+Execute docker compose command at the root directory.
 ```
 docker-compose up
 ```
+
 Make sure zookeeper, broker, ksqldb-server, ksqldb-cli, redis, seller-service and seller-anomaly-consumer have started.
 Please check `docker ps` command.
+
+## Demo
 
 ### Part 1 - Create streams and tables with ksqldb-cli
 
@@ -70,8 +71,8 @@ HAVING COUNT(*) >= 10
 EMIT CHANGES;
 ```
 
-Part 3 - Test it
-- Send bulk request with apache bench 
+### Part 2 - Test it
+- Send curl request 10 times with cli 
 ```
 curl --request GET 'localhost:8080/seller/10/orders'  |  jq
 ```
