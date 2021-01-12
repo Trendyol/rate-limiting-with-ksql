@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: '@project.name@'
+    description: '@project.description@'
+
+  redis:
+    host: localhost
+    port: 6379
+
+camel:
+  kafka:
+    brokers:
+      - localhost:29092
+    groupId: seller-anomaly-consumer-groupId
+    consumer-topics:
+      - demo.seller-core.seller-anomaly-detected
+  springboot:
+    main-run-controller: true
+
+server:
+  servlet:
+    context-path: /
+  port: 8081
